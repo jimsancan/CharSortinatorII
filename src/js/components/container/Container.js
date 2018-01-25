@@ -8,9 +8,8 @@ class Container extends Component {
       val: ''
     };
     this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(event) {
-    this.setState({ [event.target.id]: event.target.value });
+    this.newWord = this.newWord.bind(this);
+    this.printWords = this.printWords.bind(this)
     
   }
   newWord(word) {
@@ -22,18 +21,15 @@ class Container extends Component {
   handleChange(event) {
     this.setState({val: event.target.value})
   }
-
   printWords(){
     return this.state.words.join(', ')
   }
-
   render() {
     return (
       <div id="article-input">
-      Enter a string: <input id="myInput" type="text" value={this.state.val} onChange={this.handleChange}></input><button onClick={() => {this.newWord(this.state.val), document.getElementById('myInput').value = ''}}>Submit</button>
-        <p>{this.state.words.join(', ')}</p>
+      Enter a string: <input id="myInput" type="text" value={this.state.val} onChange={this.handleChange}>
+      </input><button onClick={() => {this.newWord(this.state.val), document.getElementById('myInput').value = ''}}>Submit</button>
         <p>{this.printWords()}</p>
-        
       </div>
     );
   }
